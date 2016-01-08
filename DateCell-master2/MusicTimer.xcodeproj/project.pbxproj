@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5574DB3D1C3061BE0046A124 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574DB3C1C3061BE0046A124 /* TimerViewController.swift */; };
 		558732351C3E48BF006B5AD8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558732341C3E48BF006B5AD8 /* TimerView.swift */; };
 		558732721C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558732701C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf */; };
 		558732731C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558732711C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf */; };
@@ -17,7 +16,6 @@
 		55E2C6E41A84FE4800F1ACD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E2C6E31A84FE4800F1ACD7 /* AppDelegate.swift */; };
 		55E2C6E91A84FE4800F1ACD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E2C6E71A84FE4800F1ACD7 /* Main.storyboard */; };
 		55E2C6EB1A84FE4800F1ACD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E2C6EA1A84FE4800F1ACD7 /* Images.xcassets */; };
-		55E2C6EE1A84FE4800F1ACD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E2C6EC1A84FE4800F1ACD7 /* LaunchScreen.xib */; };
 		55E2C6FA1A84FE4800F1ACD7 /* DateCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E2C6F91A84FE4800F1ACD7 /* DateCellTests.swift */; };
 		55E2C7041A85060700F1ACD7 /* DateCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E2C7031A85060700F1ACD7 /* DateCellTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5574DB3C1C3061BE0046A124 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		558732341C3E48BF006B5AD8 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		558732701C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_BoldItalic.ttf; sourceTree = "<group>"; };
 		558732711C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_Italic.ttf; sourceTree = "<group>"; };
@@ -45,7 +42,6 @@
 		55E2C6E31A84FE4800F1ACD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55E2C6E81A84FE4800F1ACD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55E2C6EA1A84FE4800F1ACD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		55E2C6ED1A84FE4800F1ACD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		55E2C6F31A84FE4800F1ACD7 /* MusicTimer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTimer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E2C6F81A84FE4800F1ACD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E2C6F91A84FE4800F1ACD7 /* DateCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCellTests.swift; sourceTree = "<group>"; };
@@ -104,11 +100,9 @@
 				55E2C7031A85060700F1ACD7 /* DateCellTableViewController.swift */,
 				558732341C3E48BF006B5AD8 /* TimerView.swift */,
 				55AED3D81C3CBE3E00ACDBD1 /* TimerManager.swift */,
-				5574DB3C1C3061BE0046A124 /* TimerViewController.swift */,
 				55AED3DC1C3DEBD600ACDBD1 /* CustomButton */,
 				55E2C6E71A84FE4800F1ACD7 /* Main.storyboard */,
 				55E2C6EA1A84FE4800F1ACD7 /* Images.xcassets */,
-				55E2C6EC1A84FE4800F1ACD7 /* LaunchScreen.xib */,
 				55E2C6E11A84FE4800F1ACD7 /* Supporting Files */,
 			);
 			path = DateCell;
@@ -224,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				55E2C6E91A84FE4800F1ACD7 /* Main.storyboard in Resources */,
-				55E2C6EE1A84FE4800F1ACD7 /* LaunchScreen.xib in Resources */,
 				55E2C6EB1A84FE4800F1ACD7 /* Images.xcassets in Resources */,
 				558732731C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf in Resources */,
 				558732721C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf in Resources */,
@@ -249,7 +242,6 @@
 				55E2C7041A85060700F1ACD7 /* DateCellTableViewController.swift in Sources */,
 				55AED3D91C3CBE3E00ACDBD1 /* TimerManager.swift in Sources */,
 				55AED3DB1C3D464A00ACDBD1 /* ButtonView.swift in Sources */,
-				5574DB3D1C3061BE0046A124 /* TimerViewController.swift in Sources */,
 				55AED3E01C3DF56100ACDBD1 /* ButtonViewController.swift in Sources */,
 				55E2C6E41A84FE4800F1ACD7 /* AppDelegate.swift in Sources */,
 			);
@@ -280,14 +272,6 @@
 				55E2C6E81A84FE4800F1ACD7 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		55E2C6EC1A84FE4800F1ACD7 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55E2C6ED1A84FE4800F1ACD7 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -374,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = DateCell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = MusicTimer;
@@ -384,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = DateCell/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = MusicTimer;

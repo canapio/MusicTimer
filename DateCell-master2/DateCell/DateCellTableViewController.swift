@@ -50,8 +50,8 @@ class DateCellTableViewController: UITableViewController, ButtonViewDelegate {
         
         tableView.scrollEnabled = false
         
-        var highInterval: Double! = 4//60*7
-        var lowInterval: Double! = 3//60*1
+        var highInterval: Double! = 60*7
+        var lowInterval: Double! = 60*1
         
         let hs = NSUserDefaults.standardUserDefaults().objectForKey("highInterval")
         let ls = NSUserDefaults.standardUserDefaults().objectForKey("lowInterval")

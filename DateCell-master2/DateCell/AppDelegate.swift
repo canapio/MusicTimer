@@ -60,3 +60,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+
+func - (left: NSDate, right: NSDate) -> NSTimeInterval {
+    return left.timeIntervalSinceDate(right)
+}
+func + (left: NSDate, right: NSDate) -> NSTimeInterval {
+    return left.timeIntervalSince1970 + right.timeIntervalSince1970
+}
+
+
+extension UIColor {
+    convenience init(netHex:Int, alpha: CGFloat) {
+        let red = (netHex >> 16) & 0xff
+        let green = (netHex >> 8) & 0xff
+        let blue = netHex & 0xff
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
+    }
+    convenience init(netHex:Int) {
+        self.init(netHex: netHex, alpha: 1.0)
+    }
+    
+}
