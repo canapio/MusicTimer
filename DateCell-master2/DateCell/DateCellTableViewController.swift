@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DateCellTableViewController: UITableViewController {
+class DateCellTableViewController: UITableViewController, ButtonViewDelegate {
     
     let kPickerAnimationDuration = 0.40 // duration for the animation to slide the date picker into view
     let kDatePickerTag           = 99   // view tag identifiying the date picker view
@@ -33,19 +33,25 @@ class DateCellTableViewController: UITableViewController {
     var pickerCellRowHeight: CGFloat = 216
     
     @IBOutlet weak var setCountLabel: UILabel!
-    
-    
-    
-    
     @IBOutlet var pickerView: UIDatePicker!
+//    @IBOutlet weak var puaseButton: UIButton!
+//    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pauseButotnView: ButtonView!
+    @IBOutlet weak var startButtonView: ButtonView!
+    
+    // for debug
+    @IBOutlet weak var hiddenView: UIView!
+    
+    
+    var timerView: TimerView! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.scrollEnabled = false
         
-        var highInterval: Double! = 60*7
-        var lowInterval: Double! = 60*1
+        var highInterval: Double! = 4//60*7
+        var lowInterval: Double! = 3//60*1
         
         let hs = NSUserDefaults.standardUserDefaults().objectForKey("highInterval")
         let ls = NSUserDefaults.standardUserDefaults().objectForKey("lowInterval")
@@ -53,7 +59,6 @@ class DateCellTableViewController: UITableViewController {
             highInterval = Double(hs as! String)
         }
         
-        print(hs)
         if ls != nil {
             lowInterval = Double(ls as! String)
         }
@@ -64,7 +69,39 @@ class DateCellTableViewController: UITableViewController {
         let setCount = NSUserDefaults.standardUserDefaults().integerForKey("SetCount")
         updateSetCount(setCount)
         
+        
+//        startButton.layer.cornerRadius = startButton.frame.height/2.0
+//        puaseButton.layer.cornerRadius = puaseButton.frame.height/2.0
+//        puaseButton.tintColor = UIColor.init(netHex: DEFALUT_COLOR)
+//        puaseButton.enabled = false
+//        puaseButton.alpha = 0.7
+        
+        
+        pauseButotnView.layer.cornerRadius = pauseButotnView.frame.width/2
+        pauseButotnView.bgColor1 = UIColor.init(white: 1.0, alpha: 1.0)
+        pauseButotnView.bgColor2 = UIColor.init(white: 1.0, alpha: 0.5)
+        pauseButotnView.image = UIImage.init(named: "pause")
+        pauseButotnView.imageView.tintColor = UIColor.init(netHex: DEFALUT_COLOR)
+        pauseButotnView.delegate = self
+        
+        
+        pauseButotnView.enable = false
+        
+        startButtonView.layer.cornerRadius = startButtonView.frame.width/2
+        startButtonView.bgColor1 = UIColor.init(netHex: DEFALUT_COLOR)
+        startButtonView.bgColor2 = UIColor.init(netHex: DEFALUT_COLOR, alpha: 0.5)
+        startButtonView.image = UIImage.init(named: "start2")
+        startButtonView.imageView.tintColor = UIColor.whiteColor()
+        startButtonView.delegate = self
+        
+        let buttonController = ButtonViewController.init()
+        buttonController.buttonViewArray.append(pauseButotnView)
+        buttonController.buttonViewArray.append(startButtonView)
+        
+        pauseButotnView.bcDelegate = buttonController
+        startButtonView.bcDelegate = buttonController
 
+        
         // setup our data source
 //        let itemOne = [kTitleKey : "7 set"]
         let itemTwo = [kTitleKey : "High Interval", kDateKey : date0]
@@ -81,11 +118,32 @@ class DateCellTableViewController: UITableViewController {
         // format in the table view cells
         //
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "localeChanged:", name: NSCurrentLocaleDidChangeNotification, object: nil)
+        
+        
+        
+        timerView = TimerView.init(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+        self.view.addSubview(timerView)
+        timerView.setInit()
+        timerView.alpha = 0
+        
+        
+        let recognizer = UILongPressGestureRecognizer.init(target: self, action: "touchLongPress:")
+        recognizer.minimumPressDuration = 2.0
+        self.hiddenView.addGestureRecognizer(recognizer)
+
+        
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        displayInlineDatePickerForRowAtIndexPath(NSIndexPath.init(forRow: kDateStartRow, inSection: 0), animated: false)
     }
 
     
@@ -257,10 +315,10 @@ class DateCellTableViewController: UITableViewController {
     
     @param indexPath The indexPath to reveal the UIDatePicker.
     */
-    func displayInlineDatePickerForRowAtIndexPath(indexPath: NSIndexPath) {
+    func displayInlineDatePickerForRowAtIndexPath(indexPath: NSIndexPath, animated: Bool) {
         
         // display the date picker inline with the table content
-        tableView.beginUpdates()
+        if animated {tableView.beginUpdates()}
         
         var before = false // indicates if the date picker is below "indexPath", help us determine which row to reveal
         if hasInlineDatePicker() {
@@ -269,25 +327,27 @@ class DateCellTableViewController: UITableViewController {
         
         let sameCellClicked = (datePickerIndexPath?.row == indexPath.row + 1)
         
+        
         // remove any date picker cell if it exists
-        if self.hasInlineDatePicker() {
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: datePickerIndexPath!.row, inSection: 0)], withRowAnimation: .Fade)
+        if !sameCellClicked && self.hasInlineDatePicker() {
+            if animated {tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: datePickerIndexPath!.row, inSection: 0)], withRowAnimation: .Fade)}
             datePickerIndexPath = nil
         }
+        
         
         if !sameCellClicked {
             // hide the old date picker and display the new one
             let rowToReveal = (before ? indexPath.row - 1 : indexPath.row)
             let indexPathToReveal = NSIndexPath(forRow: rowToReveal, inSection: 0)
             
-            toggleDatePickerForSelectedIndexPath(indexPathToReveal)
+            if animated {toggleDatePickerForSelectedIndexPath(indexPathToReveal)}
             datePickerIndexPath = NSIndexPath(forRow: indexPathToReveal.row + 1, inSection: 0)
         }
         
         // always deselect the row containing the start or end date
-        tableView.deselectRowAtIndexPath(indexPath, animated:true)
+        if animated {tableView.deselectRowAtIndexPath(indexPath, animated:true)}
         
-        tableView.endUpdates()
+        if animated {tableView.endUpdates()}
         
         // inform our date picker of the current date to match the current cell
         updateDatePicker()
@@ -333,7 +393,7 @@ class DateCellTableViewController: UITableViewController {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if cell?.reuseIdentifier == kDateCellID {
-            displayInlineDatePickerForRowAtIndexPath(indexPath)
+            displayInlineDatePickerForRowAtIndexPath(indexPath, animated: true)
         } else {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
@@ -390,17 +450,25 @@ class DateCellTableViewController: UITableViewController {
     }
 
     @IBAction func clickStart(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("TimerViewController") as! TimerViewController
-        vc.highDate = dataArray[kDateStartRow][kDateKey] as! NSDate
-        vc.lowDate = dataArray[kDateEndRow][kDateKey] as! NSDate
-        vc.setCount = NSUserDefaults.standardUserDefaults().integerForKey("SetCount")
-        if vc.setCount < 0 { vc.setCount = 0 }
         
-        let nc = UINavigationController.init(rootViewController: vc)
+
+//        let myview = UIView.init(frame: CGRectMake(0, 0, self.tableView.contentSize.width, self.tableView.contentSize.height-self.tableView.tableFooterView!.frame.height))
+//        myview.backgroundColor = UIColor.init(white: 0.0, alpha: 1.0)
+//        self.view.addSubview(myview)
+//        return
         
         
-        self.navigationController?.presentViewController(nc, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewControllerWithIdentifier("TimerViewController") as! TimerViewController
+//        vc.highDate = dataArray[kDateStartRow][kDateKey] as! NSDate
+//        vc.lowDate = dataArray[kDateEndRow][kDateKey] as! NSDate
+//        vc.setCount = NSUserDefaults.standardUserDefaults().integerForKey("SetCount")
+//        if vc.setCount < 0 { vc.setCount = 0 }
+//        
+//        let nc = UINavigationController.init(rootViewController: vc)
+//        
+//        
+//        self.navigationController?.presentViewController(nc, animated: true, completion: nil)
     }
     
     @IBAction func cllickUp(sender: AnyObject) {
@@ -422,9 +490,48 @@ class DateCellTableViewController: UITableViewController {
         updateSetCount(setCount)
     }
     func updateSetCount (setCount: Int) {
-        setCountLabel.text = "\(setCount) Set"
+        if setCount == 0 {
+            setCountLabel.text = "Unlimit Set"
+        } else {
+            setCountLabel.text = "\(setCount) Set"
+        }
+        
     }
     
+    
+    
+    func touchEnded(sender: AnyObject!) {
+        if sender === startButtonView {
+            print("touch start button")
+            
+            let highDate = dataArray[kDateStartRow][kDateKey] as! NSDate
+            let lowDate = dataArray[kDateEndRow][kDateKey] as! NSDate
+            let setCount = NSUserDefaults.standardUserDefaults().integerForKey("SetCount")
+            startTimer(highDate, lowDate: lowDate, setCount: setCount)
+            
+        } else if sender === pauseButotnView {
+            print("touch pause button")
+        }
+    }
+    
+    func touchLongPress(gestureRecognizer:UIGestureRecognizer) {
+        if gestureRecognizer.state == UIGestureRecognizerState.Began {
+            startTimer(NSDate.init(timeIntervalSince1970: 4), lowDate: NSDate.init(timeIntervalSince1970: 3), setCount: 0)
+        }
+    }
+    
+    func startTimer (highDate: NSDate, lowDate: NSDate, setCount: Int) {
+        timerView.alpha = 1
+
+        let pRect = self.view!.convertRect(pauseButotnView.frame, fromView: pauseButotnView.superview)
+        let sRect = self.view!.convertRect(startButtonView.frame, fromView: startButtonView.superview)
+        timerView.viewController = self
+        timerView.highDate = highDate
+        timerView.lowDate = lowDate
+        timerView.setCount = setCount
+        
+        timerView.startTimerWithAnimate(pRect, sRect: sRect)
+    }
     
 }
 

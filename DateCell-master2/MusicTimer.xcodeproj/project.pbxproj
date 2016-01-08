@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5574DB3D1C3061BE0046A124 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5574DB3C1C3061BE0046A124 /* TimerViewController.swift */; };
+		558732351C3E48BF006B5AD8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558732341C3E48BF006B5AD8 /* TimerView.swift */; };
+		558732721C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558732701C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf */; };
+		558732731C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558732711C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf */; };
+		55AED3D91C3CBE3E00ACDBD1 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AED3D81C3CBE3E00ACDBD1 /* TimerManager.swift */; };
+		55AED3DB1C3D464A00ACDBD1 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AED3DA1C3D464A00ACDBD1 /* ButtonView.swift */; };
+		55AED3E01C3DF56100ACDBD1 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AED3DF1C3DF56100ACDBD1 /* ButtonViewController.swift */; };
 		55E2C6E41A84FE4800F1ACD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E2C6E31A84FE4800F1ACD7 /* AppDelegate.swift */; };
 		55E2C6E91A84FE4800F1ACD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E2C6E71A84FE4800F1ACD7 /* Main.storyboard */; };
 		55E2C6EB1A84FE4800F1ACD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E2C6EA1A84FE4800F1ACD7 /* Images.xcassets */; };
@@ -28,6 +34,12 @@
 
 /* Begin PBXFileReference section */
 		5574DB3C1C3061BE0046A124 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		558732341C3E48BF006B5AD8 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		558732701C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_BoldItalic.ttf; sourceTree = "<group>"; };
+		558732711C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_Italic.ttf; sourceTree = "<group>"; };
+		55AED3D81C3CBE3E00ACDBD1 /* TimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		55AED3DA1C3D464A00ACDBD1 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		55AED3DF1C3DF56100ACDBD1 /* ButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
 		55E2C6DE1A84FE4800F1ACD7 /* MusicTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E2C6E21A84FE4800F1ACD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E2C6E31A84FE4800F1ACD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55AED3DC1C3DEBD600ACDBD1 /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				55AED3DA1C3D464A00ACDBD1 /* ButtonView.swift */,
+				55AED3DF1C3DF56100ACDBD1 /* ButtonViewController.swift */,
+			);
+			name = CustomButton;
+			sourceTree = "<group>";
+		};
 		55E2C6D51A84FE4800F1ACD7 = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +102,10 @@
 			children = (
 				55E2C6E31A84FE4800F1ACD7 /* AppDelegate.swift */,
 				55E2C7031A85060700F1ACD7 /* DateCellTableViewController.swift */,
+				558732341C3E48BF006B5AD8 /* TimerView.swift */,
+				55AED3D81C3CBE3E00ACDBD1 /* TimerManager.swift */,
 				5574DB3C1C3061BE0046A124 /* TimerViewController.swift */,
+				55AED3DC1C3DEBD600ACDBD1 /* CustomButton */,
 				55E2C6E71A84FE4800F1ACD7 /* Main.storyboard */,
 				55E2C6EA1A84FE4800F1ACD7 /* Images.xcassets */,
 				55E2C6EC1A84FE4800F1ACD7 /* LaunchScreen.xib */,
@@ -94,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				55E2C6E21A84FE4800F1ACD7 /* Info.plist */,
+				558732701C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf */,
+				558732711C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -122,9 +148,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55E2C6FD1A84FE4800F1ACD7 /* Build configuration list for PBXNativeTarget "MusicTimer" */;
 			buildPhases = (
+				55E2C6DC1A84FE4800F1ACD7 /* Resources */,
 				55E2C6DA1A84FE4800F1ACD7 /* Sources */,
 				55E2C6DB1A84FE4800F1ACD7 /* Frameworks */,
-				55E2C6DC1A84FE4800F1ACD7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -162,7 +188,7 @@
 				LastSwiftMigration = 0720;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "Kohei Hayakawa";
+				ORGANIZATIONNAME = canapio;
 				TargetAttributes = {
 					55E2C6DD1A84FE4800F1ACD7 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -200,6 +226,8 @@
 				55E2C6E91A84FE4800F1ACD7 /* Main.storyboard in Resources */,
 				55E2C6EE1A84FE4800F1ACD7 /* LaunchScreen.xib in Resources */,
 				55E2C6EB1A84FE4800F1ACD7 /* Images.xcassets in Resources */,
+				558732731C3EDA43006B5AD8 /* CaviarDreams_Italic.ttf in Resources */,
+				558732721C3EDA43006B5AD8 /* CaviarDreams_BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,8 +245,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558732351C3E48BF006B5AD8 /* TimerView.swift in Sources */,
 				55E2C7041A85060700F1ACD7 /* DateCellTableViewController.swift in Sources */,
+				55AED3D91C3CBE3E00ACDBD1 /* TimerManager.swift in Sources */,
+				55AED3DB1C3D464A00ACDBD1 /* ButtonView.swift in Sources */,
 				5574DB3D1C3061BE0046A124 /* TimerViewController.swift in Sources */,
+				55AED3E01C3DF56100ACDBD1 /* ButtonViewController.swift in Sources */,
 				55E2C6E41A84FE4800F1ACD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

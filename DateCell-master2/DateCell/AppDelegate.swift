@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+let DEFALUT_COLOR = 0xFD555B
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,6 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // prevent auto lock
         UIApplication.sharedApplication().idleTimerDisabled = true;
+        
+//        let fontFamilyNames = UIFont.familyNames()
+//        for familyName in fontFamilyNames {
+//            print("------------------------------")
+//            print("Font Family Name = [\(familyName)]")
+//            let names = UIFont.fontNamesForFamilyName(familyName)
+//            print("Font Names = [\(names)]")
+//        }
         
         return true
     }
