@@ -247,8 +247,8 @@ class TimerView: UIView, ButtonViewDelegate {
         
         
         stopButtonView.layer.cornerRadius = stopButtonView.frame.width/2
-        stopButtonView.bgColor1 = UIColor.init(netHex: 0x82232A)
-        stopButtonView.bgColor2 = UIColor.init(netHex: 0x82232A, alpha: 0.5)
+        stopButtonView.bgColor1 = UIColor.init(netHex: DEFALUT_COLOR)
+        stopButtonView.bgColor2 = UIColor.init(netHex: DEFALUT_COLOR, alpha: 0.5)
         stopButtonView.image = UIImage.init(named: "stop")
         stopButtonView.imageView.tintColor = UIColor.whiteColor()
         stopButtonView.delegate = self
@@ -270,6 +270,8 @@ class TimerView: UIView, ButtonViewDelegate {
     
     //
     func startTimerWithAnimate (pRect: CGRect, sRect: CGRect) {
+        
+        self.superview?.bringSubviewToFront(self)
         
         pauseRect = pRect
         startRect = sRect
